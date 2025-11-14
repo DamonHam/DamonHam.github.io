@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Person details</title>
+
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body>
+
+  <main class="person-page">
+
+    <a href="../index.html" class="back-link">&larr; Back to main tree</a>
+
+    <section class="person-main">
+      <div class="person-photo-wrapper">
+        <img id="person-photo" alt="Person photo" />
+      </div>
+
+      <div class="person-main-text">
+        <h1 id="person-name"></h1>
+        <p id="person-dob"></p>
+        <p id="person-dod"></p>
+      </div>
+    </section>
+
+    <section class="person-section">
+      <h3>Parents</h3>
+      <ul id="person-parents"></ul>
+    </section>
+
+    <section class="person-section">
+      <h3>Spouse or partners</h3>
+      <ul id="person-spouses"></ul>
+    </section>
+
+    <section class="person-section">
+      <h3>Children</h3>
+      <ul id="person-children"></ul>
+    </section>
+
+    <section class="person-section">
+      <h3>Siblings</h3>
+      <ul id="person-siblings"></ul>
+    </section>
+
+    <section class="person-section">
+      <h3>Notes</h3>
+      <p id="person-notes"></p>
+    </section>
+
+    <section class="person-section">
+      <h3>Sources</h3>
+      <ul id="person-sources"></ul>
+    </section>
+
+  </main>
+
+  <!-- shared data + helpers -->
+  <script src="../main.js"></script>
+
+  <!-- page-specific logic -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const personId = params.get("id");
+
+    function createPersonLink(id) {
+      const person = peopleById[id];
+      if (!person) return null;
+      const a = document.createElement("a");
+      a.href = getPersonHref(person.id);
+      a.textContent = person.name || person.id;
+      a.className = "person-link-inline";
+      return a;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const nameEl = document.getElementById("person-name");
+      const dobEl = document.getElementById("person-dob");
+      const dodEl = document.getElementById("person-dod");
+      const photoEl = document.getElementById("person-photo");
+
+      const parentsList = document.getElementById("person-parents");
+      const spousesList = document.getElementById("person-spouses");
+      const childrenList = document.getElementById("person-children");
+      const siblingsList = document.getElementById("person-siblings");
+      const notesEl = document.getElementById("person-notes");
+      const sourcesList = document.getElementById("person-sources");
+
+      if (!personId || !peopleById[personId]) {
+        nameEl.textContent = "Person not found";
+        dobEl.textContent = "";
+        dodEl.textContent = "";
+        notesEl.textContent = "No person matches this link. Check the URL or return to the main tree.";
+        photoEl.style.display = "none";
+        parentsList.innerHTML = "";
+        spousesList.innerHTML = "";
+        childrenList.innerHTML = "";
+        siblingsList.innerHTML = "";
+        sourcesList.innerHTML = "";
+        return;
+      }
+
+      const person = peopleById[personId];
+      const displayName = person.name || person.id;
+
+      // Main header text
+      nameEl.textContent = displayName;
+
+      // Bold Born / Died labels
+      dobEl.innerHTML = person.dob
+        ? `<strong>Born:</strong> ${person.dob}`
+        : "";
+
+      dodEl.innerHTML = person.dod
+        ? `<strong>Died:</strong> ${person.dod}`
+        : "";
+
+      // Photo
+      if (person.photo && person.photo.trim() !== "") {
+        photoEl.src = `../imgs/${person.photo}`;
+        photoEl.alt = displayName;
+        photoEl.style.display = "block";
+      } else {
+        photoEl.style.display = "none";
+      }
+
+      // Parents
+      parentsList.innerHTML = "";
+      if (person.parents && person.parents.length > 0) {
+        person.parents.forEach(pid => {
+          const li = document.createElement("li");
+          const link = createPersonLink(pid);
+          if (link) li.appendChild(link);
+          else li.textContent = pid;
+          parentsList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "No parents recorded.";
+        parentsList.appendChild(li);
+      }
+
+        // Spouses / partners
+        spousesList.innerHTML = "";
+
+        // Normalize person.spouse into an array of ids
+        let spouseIds = [];
+
+        if (Array.isArray(person.spouse)) {
+        spouseIds = person.spouse;
+        } else if (typeof person.spouse === "string" && person.spouse.trim() !== "") {
+        spouseIds = [person.spouse];
+        }
+
+        if (spouseIds.length > 0) {
+        spouseIds.forEach(spId => {
+            const li = document.createElement("li");
+            const link = createPersonLink(spId);
+            if (link) {
+            li.appendChild(link);
+            } else {
+            li.textContent = spId;
+            }
+            spousesList.appendChild(li);
+        });
+        } else {
+        const li = document.createElement("li");
+        li.textContent = "No spouse or partners recorded.";
+        spousesList.appendChild(li);
+        }
+
+
+      // Children
+      childrenList.innerHTML = "";
+      if (person.children && person.children.length > 0) {
+        person.children.forEach(cid => {
+          const li = document.createElement("li");
+          const link = createPersonLink(cid);
+          if (link) li.appendChild(link);
+          else li.textContent = cid;
+          childrenList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "No children recorded.";
+        childrenList.appendChild(li);
+      }
+
+      // Siblings
+      siblingsList.innerHTML = "";
+      if (person.siblings && person.siblings.length > 0) {
+        person.siblings.forEach(sid => {
+          const li = document.createElement("li");
+          const link = createPersonLink(sid);
+          if (link) li.appendChild(link);
+          else li.textContent = sid;
+          siblingsList.appendChild(li);
+        });
+      } else {
+        const li = document.createElement("li");
+        li.textContent = "No siblings recorded.";
+        siblingsList.appendChild(li);
+      }
+
+      // Notes (uses person.bio for now)
+      notesEl.textContent =
+        person.bio && person.bio.trim() !== ""
+          ? person.bio
+          : "No notes have been added yet for this person.";
+
+      // Sources (placeholder for now)
+      sourcesList.innerHTML = "";
+      const srcPlaceholder = document.createElement("li");
+      srcPlaceholder.textContent = "No sources recorded.";
+      sourcesList.appendChild(srcPlaceholder);
+    });
+  </script>
+
+</body>
+</html>

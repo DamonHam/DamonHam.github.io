@@ -1,101 +1,184 @@
 const people = [
-    {
-        id: "damon",
-        name: "Damon Hammond",
-        link: "people/DamonHammond/",
-        parents: ["deanna", "kevin"]
-    },
-    {
-        id: "amelia",
-        name: "Amelia Hammond (Vela)",
-        link: "people/AmeliaHammond/",
-        parents: []
-    },
-    {
-        id: "camila",
-        name: "Camila Hammond",
-        link: "people/CamilaHammond/",
-        parents: ["damon", "amelia"]
-    },
-    {
-        id: "dalton",
-        name: "Dalton Hammond",
-        link: "people/DaltonHammond/",
-        parents: ["deanna", "kevin"]
-    },
-    {
-        id: "kaden",
-        name: "Kaden Hammond",
-        link: "people/KadenHammond/",
-        parents: ["deanna", "robbie"]
-    },
-    {
-      id: "deanna",
-      name: "Deanna Pohlman(Hammond)",
-      link: "people/DeannaHammond/",
-      parents: ["eileen", "curtis" ]
-    },
-    {
-      id: "kevin",
-      name: "Kevin Johnson",
-      link: "people/KevinJohnson/",
-      parents: ["bobby", "susan"]
-    },
-    {
-      id: "robbie",
-      name: "Robbie LastName",
-      link: "people/RobbieLastName/",
-      parents: []
-    },
-    {
-        id: "eileen",
-        name: "Eileen Hammond(Chambers)",
-        link: "people/EileenHammond.Chambers/",
-        parents: []
-    },
-    {
-        id: "curtis",
-        name: "Curtis (Jim) Hammond Sr.",
-        link: "people/CurtisHammondSr/",
-        parents: []
-    },
-    {
-        id: "susan",
-        name: "Susan Johnson",
-        link: "people/SusanJohnson/",
-        parents: []
-    },
-    {
-        id: "bobby",
-        name: "Bobby Johnson",
-        link: "people/BobbyJohnson/",
-        parents: []
-    },
-    {   
-        id: "jr",
-        name: "Curtis Hammond Jr. (Junior)",
-        link: "people/Jr/",
-        parents: ["eileen", "curtis" ]
-    },
-    {   
-        id: "diane",
-        name: "Diane Hammond (MaidenName)",
-        link: "people/DianeHammond/",
-        parents: []
-    },
-    {   
-        id: "seth",
-        name: "Seth Hammond",
-        link: "people/SethHammond/",
-        parents: ["jr", "diane"]
-    },
-    {   
-        id: "taylor",
-        name: "Taylor Hammond",
-        link: "people/TaylorHammond/",
-        parents: ["jr", "diane"]
-    },
+  {
+    id: "damon",
+    name: "Damon Hammond",
+    dob: "March 02, 1996",
+    dod: "Hopefully Soon",
+    gender: "M",
+    bio: "Does things and stuff",
+    photo: "damon.jpg",
+    parents: ["deanna", "kevin"],
+    spouse: ["amelia"]
+  },
+  {
+    id: "amelia",
+    name: "Amelia Vela(Hammond)",
+    dob: "January 20, 1996",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "amelia.jpg",
+    parents: [],
+    spouse : ["damon"]
+  },
+  {
+    id: "camila",
+    name: "Camila Hammond",
+    dob: "January 08, 2022",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "camila.jpg",
+    parents: ["damon", "amelia"]
+  },
+  {
+    id: "dalton",
+    name: "Dalton Hammond",
+    dob: "October 24, 1993",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "dalton.jpg",
+    parents: ["deanna", "kevin"]
+  },
+  {
+    id: "megan",
+    name: "Megan Hammond",
+    dob: "September 11, 1996",
+    dod: "TBD",
+    gender: "M",
+    bio: "PooPooPeePee doodie head",
+    photo: "megan.jpg",
+    parents: [],
+    spouse: ["dalton"]
+  },
+  {
+    id: "kaden",
+    name: "Kaden Hammond",
+    dob: "May 26, 2008",
+    dod: "",
+    gender: "M",
+    bio: "",
+    photo: "kaden.jpg",
+    parents: ["deanna", "robbie"]
+  },
+  {
+    id: "deanna",
+    name: "Deanna Hammond (Pohlman)",
+    dob: "September 11, 1973",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "deanna.jpg",
+    parents: ["eileen", "curtis"],
+    spouse: ["Ronald Pohlman"]
+  },
+  {
+    id: "kevin",
+    name: "Kevin Johnson",
+    dob: "January 06, 1969",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "kevin.jpg",
+    parents: ["bobby", "susan"]
+  },
+  {
+    id: "robbie",
+    name: "Robbie LastName",
+    dob: "",
+    dod: "",
+    gender: "M",
+    bio: "",
+    photo: "robbie.jpg",
+    parents: []
+  },
+  {
+    id: "eileen",
+    name: "Eileen Chambers (Hammond)",
+    dob: "May 24, 1949",
+    dod: "July 30, 2011",
+    gender: "F",
+    bio: "",
+    photo: "eileen.jpg",
+    parents: [],
+    spouse: ["curtis"]
+  },
+  {
+    id: "curtis",
+    name: "Curtis (Jim) Hammond Sr.",
+    dob: "September 8, 1945",
+    dod: "July 30, 2011",
+    gender: "M",
+    bio: "",
+    photo: "curtis_sr.jpg",
+    parents: [],
+    spouse: ["eileen"]
+  },
+  {
+    id: "susan",
+    name: "Susan Johnson",
+    dob: "",
+    dod: "",
+    gender: "F",
+    bio: "",
+    photo: "susan.jpg",
+    parents: []
+  },
+  {
+    id: "bobby",
+    name: "Bobby Johnson",
+    dob: "",
+    dod: "",
+    gender: "M",
+    bio: "",
+    photo: "bobby.jpg",
+    parents: []
+  },
+  {
+    id: "jr",
+    name: "Curtis Hammond Jr.",
+    dob: "December 03, 1965",
+    dod: "",
+    gender: "M",
+    bio: "",
+    photo: "curtis_jr.jpg",
+    parents: ["eileen", "curtis"]
+  },
+  {
+    id: "diane",
+    name: "Diane Hammond",
+    dob: "",
+    dod: "",
+    gender: "F",
+    bio: "",
+    photo: "diane.jpg",
+    parents: []
+  },
+  {
+    id: "seth",
+    name: "Seth Hammond",
+    dob: "",
+    dod: "",
+    gender: "M",
+    bio: "",
+    photo: "seth.jpg",
+    parents: ["jr", "diane"]
+  },
+  {
+    id: "taylor",
+    name: "Taylor Hammond",
+    dob: "",
+    dod: "",
+    gender: "F",
+    bio: "",
+    photo: "taylor.jpg",
+    parents: ["jr", "diane"]
+  },
 ];
+
+
+// ---------- SHARED LOOKUPS / RELATIONSHIPS ----------
 
 // Lookup by id
 const peopleById = Object.fromEntries(
@@ -118,6 +201,12 @@ people.forEach(person => {
     )
     .map(p => p.id);
 });
+
+// Helper: link to the single person template page
+function getPersonHref(personId) {
+  // Root-based path so it works from both /index.html and /people/index.html
+  return `/people/index.html?id=${personId}`;
+}
 
 // ---------- FAMILY UNIT BUILDING (Option 2) ----------
 
@@ -167,7 +256,7 @@ const rootFamilies = familyUnits.filter(unit =>
   unit.parents.every(pid => !allChildrenIds.has(pid))
 );
 
-// ---------- RENDERING ----------
+// ---------- RENDERING THE TREE (for index.html) ----------
 
 function renderFamily(unit, visited = new Set()) {
   // avoid infinite loops if data ever forms a cycle
@@ -186,8 +275,10 @@ function renderFamily(unit, visited = new Set()) {
 
     const link = document.createElement("a");
     link.className = "person-box";
-    link.href = person.link;
-    link.textContent = person.name;
+    // Use our new helper instead of the old folder link
+    link.href = getPersonHref(person.id);
+    link.textContent = person.name || person.id;
+
     parentDiv.appendChild(link);
   });
 
@@ -217,8 +308,9 @@ function renderFamily(unit, visited = new Set()) {
 
         const link = document.createElement("a");
         link.className = "person-box";
-        link.href = child.link;
-        link.textContent = child.name;
+        // Again, use the central helper
+        link.href = getPersonHref(child.id);
+        link.textContent = child.name || child.id;
         childLi.appendChild(link);
 
         ul.appendChild(childLi);
@@ -228,7 +320,6 @@ function renderFamily(unit, visited = new Set()) {
     li.appendChild(ul);
   }
 
-
   return li;
 }
 
@@ -236,6 +327,8 @@ function renderFamily(unit, visited = new Set()) {
 if (typeof window !== "undefined") {
   window.addEventListener("DOMContentLoaded", () => {
     const rootUl = document.getElementById("tree-root");
+    // If this page doesn't have the tree container (like people/index.html), do nothing
+    if (!rootUl) return;
 
     // Render each top-level family (grandparents couples) with their descendants
     rootFamilies.forEach(unit => {

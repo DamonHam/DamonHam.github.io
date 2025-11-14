@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+
   <title>Family Tree</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
+
 <body>
 
   <header>
     <h1>Family Tree</h1>
-    <p class="subtitle">Click a name to view their page.</p>
+    <p class="subtitle">Click a name to view individual details</p>
   </header>
 
   <main>
+    <!-- Tree container -->
     <div class="tree">
-      <!-- JS will fill this <ul> based on your people array -->
       <ul id="tree-root"></ul>
     </div>
   </main>
 
-  <!-- Your JS file -->
+  <!-- Main logic file (shared by tree + person pages) -->
   <script src="main.js"></script>
+
 </body>
 </html>
