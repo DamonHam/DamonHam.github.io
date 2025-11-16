@@ -62,7 +62,6 @@ const people = [
     bio: "PooPooPeePee doodie head",
     photo: "megan.jpg",
     parents: ["dalton", "megan"],
-    spouse: ["dalton"]
   },
   {
     id: "kaden",
