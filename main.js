@@ -39,7 +39,8 @@ const people = [
     gender: "M",
     bio: "",
     photo: "dalton.jpg",
-    parents: ["deanna", "kevin"]
+    parents: ["deanna", "kevin"],
+    spouse: ["megan"]
   },
   {
     id: "megan",
@@ -50,6 +51,17 @@ const people = [
     bio: "PooPooPeePee doodie head",
     photo: "megan.jpg",
     parents: [],
+    spouse: ["dalton"]
+  },
+  {
+    id: "luna",
+    name: "Luna Hammond",
+    dob: "IDK",
+    dod: "TBD",
+    gender: "M",
+    bio: "PooPooPeePee doodie head",
+    photo: "megan.jpg",
+    parents: ["dalton", "megan"],
     spouse: ["dalton"]
   },
   {
