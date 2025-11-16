@@ -60,7 +60,7 @@ const people = [
     dod: "TBD",
     gender: "M",
     bio: "PooPooPeePee doodie head",
-    photo: "megan.jpg",
+    photo: "luna.jpg",
     parents: ["dalton", "megan"],
   },
   {
@@ -85,6 +85,17 @@ const people = [
     spouse: ["Ronald Pohlman"]
   },
   {
+    id: "ron",
+    name: "Ronald Pohlman Jr.",
+    dob: "",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "ron.jpg",
+    parents: ["unknown", "unknown"],
+    spouse: ["deanna"]
+  },
+  {
     id: "kevin",
     name: "Kevin Johnson",
     dob: "January 06, 1969",
@@ -95,14 +106,24 @@ const people = [
     parents: ["bobby", "susan"]
   },
   {
+    id: "michelle",
+    name: "Michelle Johnson (maidenName)",
+    dob: "January 06, 1969",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "michelle.jpg",
+    parents: ["unknown", "unknown"]
+  },
+  {
     id: "robbie",
-    name: "Robbie LastName",
+    name: "Robbie Elson",
     dob: "",
     dod: "",
     gender: "M",
     bio: "",
     photo: "robbie.jpg",
-    parents: []
+    parents: ["unknown", "unknown"]
   },
   {
     id: "eileen",
@@ -147,9 +168,19 @@ const people = [
     parents: []
   },
   {
+    id: "trina",
+    name: "Bettrina Hammond",
+    dob: "March 08, 1969",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "trina.jpg",
+    parents: ["eileen", "curtis"]
+  },
+  {
     id: "jr",
     name: "Curtis Hammond Jr.",
-    dob: "December 03, 1965",
+    dob: "December 03, 1967",
     dod: "",
     gender: "M",
     bio: "",
@@ -159,8 +190,8 @@ const people = [
   {
     id: "diane",
     name: "Diane Hammond",
-    dob: "",
-    dod: "",
+    dob: "May 29, 1976",
+    dod: "TBD",
     gender: "F",
     bio: "",
     photo: "diane.jpg",
@@ -169,7 +200,7 @@ const people = [
   {
     id: "seth",
     name: "Seth Hammond",
-    dob: "",
+    dob: "May 11, 2000",
     dod: "",
     gender: "M",
     bio: "",
@@ -179,9 +210,9 @@ const people = [
   {
     id: "taylor",
     name: "Taylor Hammond",
-    dob: "",
+    dob: "April 29, 2002",
     dod: "",
-    gender: "F",
+    gender: "M",
     bio: "",
     photo: "taylor.jpg",
     parents: ["jr", "diane"]
