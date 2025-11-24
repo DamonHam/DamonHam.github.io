@@ -86,7 +86,7 @@ const people = [
   },
   {
     id: "ron",
-    name: "Ronald Pohlman Jr.",
+    name: "Ronald Pohlman",
     dob: "",
     dod: "TBD",
     gender: "F",
@@ -103,17 +103,30 @@ const people = [
     gender: "M",
     bio: "",
     photo: "kevin.jpg",
-    parents: ["bobby", "susan"]
+    parents: ["bobby", "susan"],
+    spouse: ["michelle"]
   },
   {
     id: "michelle",
     name: "Michelle Johnson (maidenName)",
-    dob: "January 06, 1969",
+    dob: "",
     dod: "TBD",
     gender: "M",
     bio: "",
     photo: "michelle.jpg",
-    parents: ["unknown", "unknown"]
+    parents: ["unknown", "unknown"],
+    spouse: ["kevin"]
+  },
+  {
+    id: "cara",
+    name: "Cara Johnson (Ham)",
+    dob: "",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "cara.jpg",
+    parents: ["bobby", "susan"],
+    spouse: ["unknown", "unknown"]
   },
   {
     id: "robbie",
@@ -150,8 +163,8 @@ const people = [
   {
     id: "susan",
     name: "Susan Johnson",
-    dob: "",
-    dod: "",
+    dob: "September 06, 1945",
+    dod: "September 26, 2025",
     gender: "F",
     bio: "",
     photo: "susan.jpg",
@@ -161,7 +174,7 @@ const people = [
     id: "bobby",
     name: "Bobby Johnson",
     dob: "",
-    dod: "",
+    dod: "March 26, 2024",
     gender: "M",
     bio: "",
     photo: "bobby.jpg",
