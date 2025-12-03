@@ -254,12 +254,12 @@ header h1 {
     margin-top: 0;
   }
 
-  /* Wrapper needs to center content AND allow scrolling */
+  /* center content AND allow scrolling */
   .tree-wrapper {
     margin-top: 10px;
 
     display: flex;
-    justify-content: center;     /* this centers the scaled tree */
+    justify-content: center;
     overflow-x: auto;
     overflow-y: auto;
 
@@ -268,8 +268,8 @@ header h1 {
 
   /* Centered, tiny tree */
   .tree {
-    transform: scale(0.50);
-    transform-origin: top center;  /* align origin for consistent scaling */
+    transform: scale(0.75);
+    transform-origin: top center;
     margin-bottom: 200px;
   }
 
