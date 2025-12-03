@@ -71,8 +71,23 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const person = peopleById[personId];
-  const displayName = person.name || person.id;
+const person = peopleById[personId];
+const displayName = person.name || person.id;
+
+// About header: "About Susan"
+const aboutHeader = document.getElementById("about-header");
+if (aboutHeader) {
+  // Use name if available, otherwise fall back to id
+  let raw = person.name || person.id;
+
+  // Strip any parentheses content like "(Hammond)" just for the header
+  raw = raw.replace(/\(.+?\)/g, "").trim();
+
+  // Take the first word as first name
+  const firstName = raw.split(/\s+/)[0] || raw;
+
+  aboutHeader.textContent = `About ${firstName}`;
+}
 
   // Main header text
   nameEl.textContent = displayName;
@@ -138,9 +153,32 @@ document.addEventListener("DOMContentLoaded", () => {
       ? person.bio
       : "No notes have been added yet for this person.";
 
-  // Sources (placeholder)
-  sourcesList.innerHTML = "";
-  const srcPlaceholder = document.createElement("li");
-  srcPlaceholder.textContent = "Havent got this far yet";
-  sourcesList.appendChild(srcPlaceholder);
+// Sources
+sourcesList.innerHTML = "";
+
+if (Array.isArray(person.source) && person.source.length > 0) {
+  person.source.forEach(src => {
+    const li = document.createElement("li");
+
+    // If it's a URL, make a clickable link
+    if (typeof src === "string" && src.startsWith("http")) {
+      const a = document.createElement("a");
+      a.href = src;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = src;
+      li.appendChild(a);
+    } else {
+      // Plain text fallback
+      li.textContent = src;
+    }
+
+    sourcesList.appendChild(li);
+  });
+} else {
+  const li = document.createElement("li");
+  li.textContent = "No sources recorded.";
+  sourcesList.appendChild(li);
+}
+
 });

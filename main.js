@@ -44,7 +44,7 @@ const people = [
   },
   {
     id: "megan",
-    name: "Megan Hammond",
+    name: "Megan O'hara (Hammond)",
     dob: "September 11, 1996",
     dod: "TBD",
     gender: "F",
@@ -75,7 +75,7 @@ const people = [
   },
   {
     id: "deanna",
-    name: "Deanna Hammond (Pohlman)",
+    name: "Deanna Pohlman (Hammond)",
     dob: "September 11, 1973",
     dod: "TBD",
     gender: "F",
@@ -185,6 +185,17 @@ const people = [
     gender: "F",
     bio: "Kayla was deeply loved and will be profoundly missed by everyone fortunate enough to have been touched by her light. She is survived by her mother, Sherri Lynn Perry (and husband Joe), her Ford family relatives, her sister Kylie Hammond, her step-parents Curtis and Diane Hammond, and her four stepbrothers Todd Perry, Phillip Perry, Seth Hammond, and Taylor Hammond. She is also survived by her grandfather Duane Davis (and Sharon), her uncles Steve (Karen) and Jason (Susan) Davis, her great aunt Joyce Angel (Steven), and many cousins whom she considered her first friends. Her greatest legacy is her two beautiful children, Nicholas and Aubrey, along with their father and Kayla’s longtime partner, Sean Wilson, and her bonus son Trey. She was preceded in death by several grandparents, cousins, aunts, and uncles, as well as her sister Nichole and her stepbrother Kevin. Kayla had a naturally compassionate spirit and devoted much of her time to helping those who were underserved, especially individuals experiencing homelessness. She participated in food and clothing drives and personally delivered meals to those in need. In her work supporting clients in adult group homes, she fiercely protected the rights and dignity of those in her care. Her empathy and dedication made her a favorite among many clients, and she often opened her home to individuals who had no family during the holidays. She was deeply creative, artistic, and gifted with words. Through journaling, poetry, observations on life, and even songwriting, Kayla expressed emotion with uncommon clarity. Her unique voice, warmth, and kindness will be forever missed.",
     photo: "kayla.jpg",
+    parents: ["jr", "diane"],
+    source: ["https://www.airsman-hires.com/obituaries/Kayla-Ford?obId=45282478"]
+  },
+  {
+    id: "kylie",
+    name: "Kylie Hammond",
+    dob: "June 21, 1990",
+    dod: "",
+    gender: "F",
+    bio: "",
+    photo: "kylie.jpg",
     parents: ["jr", "diane"]
   },
   {
@@ -196,18 +207,20 @@ const people = [
     bio: "Susan Lynn Johnson, 80, of Rushville, passed away at 1:40 am on Friday, September 26, 2025, at Blessing Hospital in Quincy. She was born on September 6, 1945, in Beardstown, the daughter of the late Howard Dale & Virginia Maxine (Reed) Stevens. Susan was a 1963 graduate of Beardstown High School. Shortly thereafter, she married Bobby Jack Johnson on October 24, 1963, in Virginia and he preceded her in death on March 26, 2024. Together, they shared 60 years of marriage. Susan was the manager for IGA’s bakery department in Beardstown for several years. She was a member of the Southern Baptist Church of Beardstown where she played the piano for church services. Susan enjoyed cooking, reading, baking and travelling. Her family was her treasure and she loved to spend time with them. Susan is survived by her daughter; Cara (Rick) Ham of Belize, two sons; Kevin (Michelle) Johnson of Mount Sterling & Scott (Jennifer) Johnson of Rushville, eight grandchildren; Christopher, Ryan, Tim, Dalton, Damon, Ashley, Zachary & Kendall, one great granddaughter, one great grandson and by several nieces and nephews. Besides her parents and husband, Susan was preceded in death by two brothers; Earl Craig Stevens & Dana Dale Stevens.",
     photo: "susan.jpg",
     parents: [],
-    spouse: ["bobby"]
+    spouse: ["bobby"],
+    source: ["https://www.triplettandwood.com/obituaries/susan-johnson"]
   },
   {
     id: "bobby",
     name: "Bobby Johnson",
-    dob: "",
+    dob: "August 20, 1942",
     dod: "March 26, 2024",
     gender: "M",
     bio: "Bobby Johnson, 81, of Rushville, passed away at 3:25 pm on Tuesday, March 26, 2024, at Culbertson Memorial Hospital in Rushville. He was born on August 20, 1942, in Dayton, Tennessee, the son of the late Coy & Sally Bell (Johnson) Holcomb. Bobby married Susan Stevens on October 24, 1963, in Virginia, Illinois and she survives. He entered the United States Air Force and served as a medic during his military tenure. After retiring from the service, Bobby worked at True Value Hardware in Beardstown and at the IGA in Beardstown. He was a member and deacon of the First Southern Baptist Church of Beardstown. Bobby was an avid bowler and enjoyed outdoor activities such as fishing, hunting and camping. He loved sports, especially football, and his favorite teams were the Dallas Cowboys and the Tennessee Volunteers. He also enjoyed Atlanta Braves baseball. Bobby cherished his family, especially his grandchildren. In addition to his wife of sixty years, Susan of Rushville, Bobby is survived by his daughter Cara (Rick) Ham of Belize, two sons Kevin (Michelle) Johnson of Mount Sterling and Scott (Jennifer) Johnson of Rushville, eight grandchildren Christopher, Ryan, Tim, Dalton, Damon, Ashley, Zachary and Kendall, one great granddaughter Camila, a forthcoming grandson expected in July, and several nieces and nephews. Besides his parents, Bobby was preceded in death by two brothers Billy and Paul and by three sisters Betty, Frances and Patricia.",
     photo: "bobby.jpg",
     parents: [],
-    spouse: ["susan"]
+    spouse: ["susan"],
+    source: ["https://www.triplettandwood.com/obituaries/bobby-johnson"]
   },
   {
     id: "kevin",
@@ -254,6 +267,28 @@ const people = [
     spouse: ["scott"]
   },
   {
+    id: "ashley",
+    name: "Ashley Johnson",
+    dob: "",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "ashley.jpg",
+    parents: ["scott", "jennifer"],
+    spouse: []
+  },
+  {
+    id: "zach",
+    name: "Zach Johnson",
+    dob: "",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "zach.jpg",
+    parents: ["scott", "jennifer"],
+    spouse: []
+  },
+  {
     id: "cara",
     name: "Cara Johnson (Ham)",
     dob: "",
@@ -295,9 +330,10 @@ function getPersonHref(personId) {
 }
 
 
-// =======================
-// FAMILY UNIT CONSTRUCTION
-// =======================
+/* =======================
+
+   FAMILY UNIT CONSTRUCTION
+   ======================= */
 
 // Every child with two parents defines a "parent pair" unit
 function parentPairKey(child) {

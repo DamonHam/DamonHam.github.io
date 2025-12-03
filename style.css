@@ -241,7 +241,7 @@ header h1 {
   background-color: #111421;
   border-radius: 8px;
   padding: 14px 18px;
-  max-width: 70ch; /* comfortable reading width */
+  max-width: 70ch;
   line-height: 1.5;
   color: #d0d6f5;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
@@ -250,7 +250,7 @@ header h1 {
 /* Make long bios easier to read (respect line breaks) */
 #person-notes {
   margin: 0;
-  white-space: pre-line;  /* turns \n into real line breaks */
+  white-space: pre-line;
   font-size: 0.95rem;
 }
 
@@ -290,15 +290,14 @@ header h1 {
   gap: 4px;
   }
 
-
-  /* Centered, tiny tree */
+  /* Shrink the whole tree down */
   .tree {
     transform: scale(.5);
-    transform-origin: top center;  /* align origin for consistent scaling */
+    transform-origin: top center;
     margin-bottom: 200px;
   }
 
-  /* Person boxes remain normal size when zoomed in */
+  /* Smaller person boxes */
   .person-box {
     min-width: 25px;
     padding: 6px 8px;
