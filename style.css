@@ -1,4 +1,4 @@
-/* Page basics */
+/* ===== Page basics ===== */
 body {
   margin: 0;
   padding: 20px;
@@ -18,11 +18,19 @@ header h1 {
   font-size: 0.95rem;
 }
 
+
+/* ===== Family tree layout ===== */
+
+/* Wrapper so the tree can be wider than the screen and scroll horizontally */
+.tree-wrapper {
+  margin-top: 40px;
+  overflow-x: auto;      /* horizontal scrollbar if needed */
+  overflow-y: visible;   /* allow vertical growth */
+}
+
 /* Tree container */
 .tree {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
+  display: inline-block; /* so it sizes to its content and centers nicely */
 }
 
 /* Remove bullets and set up positioning for connectors */
@@ -31,6 +39,7 @@ header h1 {
   position: relative;
   padding-left: 0;
   list-style-type: none;
+  margin: 0;
 }
 
 /* Each node in the tree */
@@ -87,16 +96,29 @@ header h1 {
   border: none;
 }
 
-/* Person box styling */
+/* ------ Make root families look like true tree tops ------ */
+
+/* Don't draw a vertical connector above the very top UL */
+.tree > ul#tree-root::before {
+  display: none;
+}
+
+/* Don't draw horizontal connectors between separate root families */
+.tree > ul#tree-root > li::before,
+.tree > ul#tree-root > li::after {
+  border: none;
+}
+
+/* Person box base styling */
 .person-box {
   display: inline-block;
-  min-width: 150px;
-  padding: 10px 18px;
+  min-width: 140px;
+  padding: 8px 14px;
   border-radius: 8px;
-  background-color: #192133;
+  background-color: #192133;    /* fallback color */
   color: #d8e1ff;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.45);
   transition: transform 0.12s ease, background-color 0.12s ease;
 }
@@ -105,6 +127,26 @@ header h1 {
   transform: scale(1.05);
   background-color: #273252;
 }
+
+/* Branch color variants (per root family) */
+.person-box.branch-0 {
+  background-color: #1c2540;
+}
+
+.person-box.branch-1 {
+  background-color: #3c2453;
+}
+
+.person-box.branch-2 {
+  background-color: #3c1281;
+}
+
+.person-box.branch-3 {
+  background-color: #3b3a6f;
+}
+
+/* You can add more branch-X rules if you end up with more root trees */
+
 
 
 /* ===== Person detail page ===== */

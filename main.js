@@ -47,7 +47,7 @@ const people = [
     name: "Megan Hammond",
     dob: "September 11, 1996",
     dod: "TBD",
-    gender: "M",
+    gender: "F",
     bio: "PooPooPeePee doodie head",
     photo: "megan.jpg",
     parents: [],
@@ -58,8 +58,8 @@ const people = [
     name: "Luna Hammond",
     dob: "IDK",
     dod: "TBD",
-    gender: "M",
-    bio: "PooPooPeePee doodie head",
+    gender: "F",
+    bio: "",
     photo: "luna.jpg",
     parents: ["dalton", "megan"],
   },
@@ -89,44 +89,11 @@ const people = [
     name: "Ronald Pohlman",
     dob: "",
     dod: "TBD",
-    gender: "F",
+    gender: "M",
     bio: "",
     photo: "ron.jpg",
-    parents: ["unknown", "unknown"],
+    parents: [],
     spouse: ["deanna"]
-  },
-  {
-    id: "kevin",
-    name: "Kevin Johnson",
-    dob: "January 06, 1969",
-    dod: "TBD",
-    gender: "M",
-    bio: "",
-    photo: "kevin.jpg",
-    parents: ["bobby", "susan"],
-    spouse: ["michelle"]
-  },
-  {
-    id: "michelle",
-    name: "Michelle Johnson (maidenName)",
-    dob: "",
-    dod: "TBD",
-    gender: "M",
-    bio: "",
-    photo: "michelle.jpg",
-    parents: ["unknown", "unknown"],
-    spouse: ["kevin"]
-  },
-  {
-    id: "cara",
-    name: "Cara Johnson (Ham)",
-    dob: "",
-    dod: "TBD",
-    gender: "M",
-    bio: "",
-    photo: "cara.jpg",
-    parents: ["bobby", "susan"],
-    spouse: ["unknown", "unknown"]
   },
   {
     id: "robbie",
@@ -136,7 +103,7 @@ const people = [
     gender: "M",
     bio: "",
     photo: "robbie.jpg",
-    parents: ["unknown", "unknown"]
+    parents: []
   },
   {
     id: "eileen",
@@ -159,26 +126,6 @@ const people = [
     photo: "curtis_sr.jpg",
     parents: [],
     spouse: ["eileen"]
-  },
-  {
-    id: "susan",
-    name: "Susan Johnson",
-    dob: "September 06, 1945",
-    dod: "September 26, 2025",
-    gender: "F",
-    bio: "",
-    photo: "susan.jpg",
-    parents: []
-  },
-  {
-    id: "bobby",
-    name: "Bobby Johnson",
-    dob: "",
-    dod: "March 26, 2024",
-    gender: "M",
-    bio: "",
-    photo: "bobby.jpg",
-    parents: []
   },
   {
     id: "trina",
@@ -230,24 +177,97 @@ const people = [
     photo: "taylor.jpg",
     parents: ["jr", "diane"]
   },
+  {
+    id: "susan",
+    name: "Susan Johnson",
+    dob: "September 06, 1945",
+    dod: "September 26, 2025",
+    gender: "F",
+    bio: "",
+    photo: "susan.jpg",
+    parents: []
+  },
+  {
+    id: "bobby",
+    name: "Bobby Johnson",
+    dob: "",
+    dod: "March 26, 2024",
+    gender: "M",
+    bio: "",
+    photo: "bobby.jpg",
+    parents: []
+  },
+  {
+    id: "kevin",
+    name: "Kevin Johnson",
+    dob: "January 06, 1969",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "kevin.jpg",
+    parents: ["bobby", "susan"],
+    spouse: ["michelle"]
+  },
+  {
+    id: "michelle",
+    name: "Michelle Johnson (maidenName)",
+    dob: "",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "michelle.jpg",
+    parents: [],
+    spouse: ["kevin"]
+  },
+  {
+    id: "scott",
+    name: "Scott Johnson",
+    dob: "",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "scott.jpg",
+    parents: ["bobby", "susan"],
+    spouse: ["jennifer"]
+  },
+  {
+    id: "jennifer",
+    name: "Jennifer Johnson (maidenName)",
+    dob: "",
+    dod: "TBD",
+    gender: "F",
+    bio: "",
+    photo: "jennifer.jpg",
+    parents: [],
+    spouse: ["scott"]
+  },
+  {
+    id: "cara",
+    name: "Cara Johnson (Ham)",
+    dob: "",
+    dod: "TBD",
+    gender: "M",
+    bio: "",
+    photo: "cara.jpg",
+    parents: ["bobby", "susan"],
+    spouse: []
+  },
 ];
 
 
-// ---------- SHARED LOOKUPS / RELATIONSHIPS ----------
-
-// Lookup by id
+// Fast lookup by id
 const peopleById = Object.fromEntries(
   people.map(p => [p.id, p])
 );
 
-// Compute children for convenience (still useful for debugging or pages)
+// Build children list for each person
 people.forEach(person => {
   person.children = people
     .filter(p => p.parents.includes(person.id))
     .map(p => p.id);
 });
 
-// Compute siblings (optional, for later use on person pages)
+// Build siblings list for each person
 people.forEach(person => {
   person.siblings = people
     .filter(p =>
@@ -257,18 +277,20 @@ people.forEach(person => {
     .map(p => p.id);
 });
 
-// Helper: link to the single person template page
+// Link to a person's page
 function getPersonHref(personId) {
-  // Root-based path so it works from both /index.html and /people/index.html
   return `/people/index.html?id=${personId}`;
 }
 
-// ---------- FAMILY UNIT BUILDING (Option 2) ----------
 
-// Turn each child with 2 parents into a "parent pair" family unit
+// =======================
+// FAMILY UNIT CONSTRUCTION
+// =======================
+
+// Every child with two parents defines a "parent pair" unit
 function parentPairKey(child) {
   if (!child.parents || child.parents.length < 2) return null;
-  const pair = [...child.parents].sort();    // ensure "deanna|kevin" == "kevin|deanna"
+  const pair = [...child.parents].sort();
   return pair.join("|");
 }
 
@@ -276,12 +298,12 @@ const familyUnitsByKey = {};
 
 people.forEach(child => {
   const key = parentPairKey(child);
-  if (!key) return; // skip if child has fewer than 2 parents
+  if (!key) return;
 
   if (!familyUnitsByKey[key]) {
     familyUnitsByKey[key] = {
       key,
-      parents: [...child.parents], // two ids
+      parents: [...child.parents],
       children: []
     };
   }
@@ -291,7 +313,7 @@ people.forEach(child => {
 
 const familyUnits = Object.values(familyUnitsByKey);
 
-// Map: which family units a person is a parent in
+// Reverse: which family units is a person a parent in
 const familiesByParentId = {};
 familyUnits.forEach(unit => {
   unit.parents.forEach(pid => {
@@ -300,27 +322,32 @@ familyUnits.forEach(unit => {
   });
 });
 
-// Which person ids appear as children in some family
+// Find which ids are ever children, to identify roots
 const allChildrenIds = new Set();
 familyUnits.forEach(unit => {
   unit.children.forEach(c => allChildrenIds.add(c));
 });
 
-// Root families = families whose parents are not themselves children in any family
+// Root families = families whose parents are not children in any other family
 const rootFamilies = familyUnits.filter(unit =>
   unit.parents.every(pid => !allChildrenIds.has(pid))
 );
 
-// ---------- RENDERING THE TREE (for index.html) ----------
 
-function renderFamily(unit, visited = new Set()) {
-  // avoid infinite loops if data ever forms a cycle
+// ============================
+// TREE RENDERING FOR index.html
+// ============================
+
+function renderFamily(unit, visited = new Set(), branchIndex = 0) {
+  if (!unit || !unit.key) return null;
+
+  // avoid infinite loops if bad data creates a cycle
   if (visited.has(unit.key)) return null;
   visited.add(unit.key);
 
   const li = document.createElement("li");
 
-  // Parent pair row
+  // ----- Parents row -----
   const parentDiv = document.createElement("div");
   parentDiv.className = "parent-pair";
 
@@ -329,8 +356,8 @@ function renderFamily(unit, visited = new Set()) {
     if (!person) return;
 
     const link = document.createElement("a");
-    link.className = "person-box";
-    // Use our new helper instead of the old folder link
+    // add branch-specific class for color
+    link.className = `person-box branch-${branchIndex}`;
     link.href = getPersonHref(person.id);
     link.textContent = person.name || person.id;
 
@@ -339,7 +366,7 @@ function renderFamily(unit, visited = new Set()) {
 
   li.appendChild(parentDiv);
 
-  // Children row
+  // ----- Children row -----
   if (unit.children && unit.children.length > 0) {
     const ul = document.createElement("ul");
 
@@ -350,24 +377,22 @@ function renderFamily(unit, visited = new Set()) {
       const childFamilies = familiesByParentId[childId];
 
       if (childFamilies && childFamilies.length > 0) {
-        // Child is a parent in one or more families:
-        // render those family units directly under this family,
-        // instead of a solo child row.
+        // Child is a parent in one or more family units
         childFamilies.forEach(cf => {
-          const subLi = renderFamily(cf, new Set(visited));
+          const subLi = renderFamily(cf, new Set(visited), branchIndex);
           if (subLi) ul.appendChild(subLi);
         });
+
       } else {
-        // Leaf child: show as a single person box
+        // Just a simple child node
         const childLi = document.createElement("li");
 
         const link = document.createElement("a");
-        link.className = "person-box";
-        // Again, use the central helper
+        link.className = `person-box branch-${branchIndex}`;
         link.href = getPersonHref(child.id);
         link.textContent = child.name || child.id;
-        childLi.appendChild(link);
 
+        childLi.appendChild(link);
         ul.appendChild(childLi);
       }
     });
@@ -378,16 +403,19 @@ function renderFamily(unit, visited = new Set()) {
   return li;
 }
 
-// Only attach DOM listeners in the browser, not when running with Node
+
+// =========================
+// PAGE INITIALIZATION HOOK
+// =========================
+
 if (typeof window !== "undefined") {
   window.addEventListener("DOMContentLoaded", () => {
     const rootUl = document.getElementById("tree-root");
-    // If this page doesn't have the tree container (like people/index.html), do nothing
     if (!rootUl) return;
 
-    // Render each top-level family (grandparents couples) with their descendants
-    rootFamilies.forEach(unit => {
-      const li = renderFamily(unit);
+    // Each independent root family gets its own branch index
+    rootFamilies.forEach((unit, index) => {
+      const li = renderFamily(unit, new Set(), index);
       if (li) rootUl.appendChild(li);
     });
   });
