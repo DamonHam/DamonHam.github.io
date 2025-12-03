@@ -240,35 +240,43 @@ header h1 {
 @media (max-width: 768px) {
 
   body {
-    padding: 10px;
+    padding: 6px;
   }
 
+  /* Smaller header to match the tiny tree */
   header h1 {
-    font-size: 1.4rem;
+    font-size: .90rem;
+    margin-bottom: 2px;
   }
 
   .subtitle {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    margin-top: 0;
   }
 
-  /* Let the tree use full width and be very scrollable */
+  /* Wrapper needs to center content AND allow scrolling */
   .tree-wrapper {
-    margin-top: 20px;
+    margin-top: 10px;
+
+    display: flex;
+    justify-content: center;     /* this centers the scaled tree */
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: auto;
+
+    min-height: 500px;
   }
 
-  /* Slightly shrink the whole tree visually */
+  /* Centered, tiny tree */
   .tree {
-    transform: scale(0.75);
-    transform-origin: top left;
-    margin-bottom: 60px;  /* avoid it getting clipped at bottom */
+    transform: scale(0.50);
+    transform-origin: top center;  /* align origin for consistent scaling */
+    margin-bottom: 200px;
   }
 
-  /* Make person boxes smaller so more fits on screen */
+  /* Person boxes remain normal size when zoomed in */
   .person-box {
-    min-width: 110px;
+    min-width: 150px;
     padding: 6px 8px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 }
