@@ -1,7 +1,3 @@
-// people.js
-// Logic for the person detail page at /people/index.html
-
-// Helper to create a link to another person
 function createPersonLink(id) {
   const person = typeof peopleById !== "undefined" ? peopleById[id] : null;
   if (!person) return null;
@@ -13,7 +9,8 @@ function createPersonLink(id) {
   return a;
 }
 
-// Small helper to render a list of person ids into a <ul>
+// Renders a list of person IDs into the given container element.
+// If the list is empty or null, displays the provided emptyText instead.
 function renderPersonIdList(container, ids, emptyText) {
   container.innerHTML = "";
 
@@ -37,13 +34,13 @@ function renderPersonIdList(container, ids, emptyText) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Only run on the person page
+  // Get main elements
   const nameEl = document.getElementById("person-name");
   const dobEl = document.getElementById("person-dob");
   const dodEl = document.getElementById("person-dod");
   const photoEl = document.getElementById("person-photo");
 
-  // If these do not exist, we are not on the person page
+  // If any of the main elements are missing, abort
   if (!nameEl || !dobEl || !dodEl || !photoEl) return;
 
   const parentsList = document.getElementById("person-parents");
@@ -56,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const personId = params.get("id");
 
-  // If we do not have a valid person, show an error state
+  // Handle missing or invalid person ID
   if (!personId || typeof peopleById === "undefined" || !peopleById[personId]) {
     if (nameEl) nameEl.textContent = "Person not found";
     if (dobEl) dobEl.textContent = "";
@@ -144,6 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sources (placeholder)
   sourcesList.innerHTML = "";
   const srcPlaceholder = document.createElement("li");
-  srcPlaceholder.textContent = "No sources recorded.";
+  srcPlaceholder.textContent = "Havent got this far yet";
   sourcesList.appendChild(srcPlaceholder);
 });
