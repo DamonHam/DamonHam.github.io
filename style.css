@@ -258,25 +258,33 @@ header h1 {
   .tree-wrapper {
     margin-top: 10px;
 
-    display: flex;
+    display: block;
     justify-content: center;
     overflow-x: auto;
     overflow-y: auto;
 
     min-height: 500px;
   }
+  .parent-pair {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  }
+
 
   /* Centered, tiny tree */
   .tree {
-    transform: scale(0.75);
-    transform-origin: top center;
+    transform: scale(.5);
+    transform-origin: top center;  /* align origin for consistent scaling */
     margin-bottom: 200px;
   }
 
   /* Person boxes remain normal size when zoomed in */
   .person-box {
-    min-width: 150px;
+    min-width: 25px;
     padding: 6px 8px;
     font-size: 0.85rem;
+    white-space: nowrap;
   }
 }
