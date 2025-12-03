@@ -235,3 +235,40 @@ header h1 {
 .person-link-inline:hover {
   text-decoration: underline;
 }
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  /* Let the tree use full width and be very scrollable */
+  .tree-wrapper {
+    margin-top: 20px;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  /* Slightly shrink the whole tree visually */
+  .tree {
+    transform: scale(0.75);
+    transform-origin: top left;
+    margin-bottom: 60px;  /* avoid it getting clipped at bottom */
+  }
+
+  /* Make person boxes smaller so more fits on screen */
+  .person-box {
+    min-width: 110px;
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+}
